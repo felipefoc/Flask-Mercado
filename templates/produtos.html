@@ -18,27 +18,18 @@
     background-color: white;
     overflow-y: scroll;
 }
-
-###.card {
+.card {
     position: relative;
-    margin:10px;
-    justify-content: center;
-    width: 20%;
-    height: 40%;
-}
-
-img {
-    position: relative;
-
+    margin: 5px;
+    width: 200´x;
 }
 {% endblock %}
 
 {% block content %}
 <div class="container">
     {% for produto in produtos %}
-    <div class="card" width="18rem;">
-        <img class="card-img-top" src="/static/upload/{{ produto.nome_img }}" alt="Card image cap"
-             style="width:3018 e%;height:30%;">
+    <div class="card">
+        <img class="card-img-top" src="/static/upload/{{ produto.nome_img }}" alt="Card image cap">
         <div class="card-body">
             <h5 class="card-title">{{ produto.nome }}</h5>
             <p class="card-text">R$ {{ produto.valor }}</p>

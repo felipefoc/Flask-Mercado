@@ -168,7 +168,7 @@ def delete(numeroid):
     Produtos.query.filter_by(id=numeroid).delete()
     db.session.commit()
     flash('Deletado com sucesso')
-    return redirect('listaprodutos.html')
+    return redirect('listadeprodutos.html')
 
 
 
