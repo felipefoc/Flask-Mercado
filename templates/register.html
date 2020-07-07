@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Registrar{% endblock %}</h1>
+{% endblock %}
+{% block style %}
+.loginbutton {
+    position: fixed;
+    left: 88.8%;
+    background-color: transparent;
+}
+#navbar {
+    position: fixed;
+    top: 0%;
+    width: 100%;
+}
+.registerform {
+    border: 5px solid white;
+    position: fixed;
+    width: 80%;
+    top: 7%;
+    right: 10%;
+    margin: 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 20px;
+}
+{% endblock %}
+{% block content %}
+<form class="registerform" method="POST">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="emailuser">Email:</label>
+            <input type="email" class="form-control" id="emailuser" name="emailuser">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="senha">Senha</label>
+            <input type="password" class="form-control" id="senha" name="senha">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="username">Nome de Usuário:</label>
+        <input type="text" class="form-control" id="username" name="username" placeholder="1234 Main St">
+    </div>
+    <div class="form-group">
+        <label for="endereco">Endereço:</label>
+        <input type="text" class="form-control" id="endereco" name="endereco" placeholder="1234 Main St">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="numero">Número:</label>
+            <input type="text" class="form-control" id="numero" name="numero">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="comp">Complemento:</label>
+            <input type="text" class="form-control" id="comp" name="comp">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="nome">Nome:</label>
+        <input type="text" class="form-control" id="nome" name="nome" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-group">
+        <label for="sobrenome">Sobrenome:</label>
+        <input type="text" class="form-control" id="sobrenome" name="sobrenome" placeholder="Apartment, studio, or floor">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label for="cep">CEP:</label>
+            <input type="text" class="form-control" id="cep" name="cep">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+</form>
+{% endblock %}

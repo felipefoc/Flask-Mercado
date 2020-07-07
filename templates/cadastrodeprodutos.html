@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block header %}
+{% endblock %}
+{% block style %}
+form {
+    position: fixed;
+    border: 10px solid white;
+    margin: 15px;
+    padding: 10px;
+    width: 50%;
+    height: 50%;
+    left: 25%;
+    background-color: white;
+    border-radius: 15px 50px;
+    top: 25%;
+}
+{% endblock %}
+{% block content %}
+<form method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <label for="produtonome">Produto:</label>
+        <input type="text" class="form-control" id="produtonome" name="produtonome" placeholder="Nome do Produto">
+    </div>
+    <div class="form-group">
+        <label for="setor">Setor</label>
+        <select class="form-control" id="setor" name="setor">
+            <option>Bebida</option>
+            <option>Frios</option>
+            <option>Biscoito</option>
+            <option>Banheiro</option>
+            <option>Limpeza</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="valor">Preço:</label>
+        <input type="text" class="form-control" id="valor" name="valor" placeholder="Usar virugula! Ex: 13,49">
+    </div>
+    <div class="form-group">
+        <label for="imgproduto">Imagem do produto:</label>
+        <input type="file" class="form-control-file" id="imgproduto" name="imgproduto">
+    </div>
+    <button type="submit" class="btn btn-primary">Enviar</button>
+</form>
+
+{% endblock %}

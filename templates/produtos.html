@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<h1>{% block title %}Produtos{% endblock %}</h1>
+{% endblock %}
+
+{% block style %}
+.container {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    margin: 50px;
+    border: 5px solid black;
+    max-width: 75%;
+    height: 85%;
+    top: 5%;
+    left: 10%;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+###.card {
+    position: relative;
+    margin:10px;
+    justify-content: center;
+    width: 20%;
+    height: 40%;
+}
+
+img {
+    position: relative;
+
+}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    {% for produto in produtos %}
+    <div class="card" width="18rem;">
+        <img class="card-img-top" src="/static/upload/{{ produto.nome_img }}" alt="Card image cap"
+             style="width:3018 e%;height:30%;">
+        <div class="card-body">
+            <h5 class="card-title">{{ produto.nome }}</h5>
+            <p class="card-text">R$ {{ produto.valor }}</p>
+            <a href="#" class="btn btn-primary">Adicionar ao carrinho.</a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

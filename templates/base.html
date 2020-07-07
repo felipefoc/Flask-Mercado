@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<title>{% block title %}{% endblock %}</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+      integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+<style>
+html {
+  background: url(/static/images/bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+}
+.loginbutton {
+    position: fixed;
+    left: 88.8%;
+    background-color: transparent;
+}
+#navbar {
+    position: fixed;
+    margin: auto;
+    width: 100%;
+}
+#alert {
+    position: fixed;
+    left: 40%;
+    height: 7%;
+    width: 15%;
+    top: 80%;
+    text-align: center;
+    font-size: 15px;
+    }
+
+{% block style %}{% endblock %}
+</style>
+<body>
+{% with messages = get_flashed_messages() %}
+    {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-danger" id="alert">
+            {{ message }}
+        </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+
+<!-- NAVBAR -->
+<!-- Image and text -->
+{% if session['logado'] %}
+<nav class="navbar navbar-light bg-light" id="navbar">
+    <a class="navbar-brand" href="/">
+        <img src="https://image.flaticon.com/icons/png/512/29/29508.png" width="30" height="30"
+             class="d-inline-block align-top"
+             alt="" loading="lazy">
+        Mercadão
+    </a>
+    <div class="loginbutton">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary">
+            Logado como {{ session['logado'] }}
+        </button>
+    </div>
+    <div class="registrarbutton">
+        <a href="/logout">sair</a>
+    </div>
+</nav>
+{% endif %}
+
+{% if session['logado'] == False %}
+<nav class="navbar navbar-light bg-light" id="navbar">
+    <a class="navbar-brand" href="/">
+        <img src="https://image.flaticon.com/icons/png/512/29/29508.png" width="30" height="30"
+             class="d-inline-block align-top"
+             alt="" loading="lazy">
+        Mercadão
+    </a>
+    <div class="loginbutton">
+        <!-- Button trigger modal -->
+        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#staticBackdrop">
+            Fazer login
+        </button>
+    </div>
+    <div class="registrarbutton">
+        <a href="/registrar">ou Registrar</a>
+    </div>
+</nav>
+<div class="modal fade" id="staticBackdrop" data-backdrop="static" data-keyboard="false" tabindex="-1" role="dialog"
+     aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div>
+                    <!--CORPO MODAL-->
+                    <form method="POST">
+                        <div class="form-group row">
+                            <label for="emaillogin" class="col-sm-2 col-form-label">Email</label>
+                            <div class="col-sm-10">
+                                <input type="email" class="form-control" id="emaillogin" name="emaillogin">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="passwordlogin" class="col-sm-2 col-form-label">Senha</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" id="passwordlogin" name="passwordlogin">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-10">
+                                <button type="submit" class="btn btn-primary">Entrar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+{% block content %}{% endblock %}
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+</html>
